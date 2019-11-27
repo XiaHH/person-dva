@@ -64,6 +64,7 @@ const PersonList=({onDelete,persons})=>{
         <Table
             dataSource={persons}
             columns={columns}
+            pagination={false}
         />
     );
 };

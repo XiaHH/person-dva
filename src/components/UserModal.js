@@ -29,9 +29,8 @@ class UserEditModal extends Component {
     this.props.form.validateFields((err, values) => {
 
       if (!err) {
+        console.log(values.birthday._d.getMonth);
         
-        var s=values.birthday.getFullYear()+"/"+values.birthday.getMonth()+"/"+values.birthday.getDate();
-        values.birthday=s;
         console.log(values);
         onOk(values);
         this.hideModelHandler();
@@ -89,7 +88,7 @@ class UserEditModal extends Component {
             )}
           </Form.Item>
   
-          <Form.Item label="出生日期">
+          <Form.Item type="date" label="出生日期">
           {getFieldDecorator('birthday',{
               initialValue: birthday,
             })(<DatePicker />)}
