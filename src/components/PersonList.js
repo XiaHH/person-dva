@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Table,Tag,Popconfirm,Button} from 'antd';
+import UserModal from './UserModal';
 
 //人员表格构造,接受行为参数和表格数据persons
-const PersonList=({onDelete,persons})=>{
-    //数据项
+const PersonList=({onEdit,onDelete,persons})=>{
+    
+    //表格列
     const columns = [
         {
           title: '姓名',
@@ -51,21 +53,27 @@ const PersonList=({onDelete,persons})=>{
           key: 'action',
           render: (text, record,index) => (
             <span>
-              <a>修改 </a>
-              <Popconfirm title="Delete?" onConfirm={() => onDelete(record.id)}>
-                <Button>Delete</Button>
+              <UserModal record={record} onOk={onEdit}>
+                <Button>修改</Button>
+              </UserModal>
+              <Popconfirm title="删除?" onConfirm={() => onDelete(record.id)}>
+                <Button>删除</Button>
               </Popconfirm>
             </span>
           ),
         },
     ];
 
+    //返回表格
     return(
         <Table
             dataSource={persons}
             columns={columns}
             pagination={false}
+            rowKey={record => record.id}
         />
+        
+  
     );
 };
 

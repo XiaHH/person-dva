@@ -1,10 +1,13 @@
 import React from 'react'
 import { connect } from 'dva';
 import PersonList from '../components/PersonList';
-import {Button} from 'antd';
+import {Button,Row,Col,Input} from 'antd';
 import UserModal from '../components/UserModal'
 
+
+//父级页面，包含标题，增加，搜索，表格等
 //connect起model和component
+const { Search } = Input;
 const Persons=({dispatch,persons})=>{
    //删除函数
     function handleDelete(id){
@@ -20,25 +23,36 @@ const Persons=({dispatch,persons})=>{
             payload: values,
           });
     }
-
     //修改
-    function handleEdit(id, values) {
+    function handleEdit(values) {
         dispatch({
           type: 'persons/patch',
-          payload: { id, values },
+          payload:  values ,
         });
     }
 
-    //
+    //查找
+    function handleFind(name){
+        dispatch({
+            type:'persons/find',
+            payload:name,
+        })
+    }
 
     return(
         <div>
             <h2>人员列表</h2>
-            <div>
+            <Row>
+                <Col span={12}>
+                <Search  placeholder="输入姓名进行搜索" onSearch={value=>handleFind(value)} enterButton />
+                </Col>
+                <Col span={4} offset={8}>
                 <UserModal record={{}} onOk={handleCreate}>
                     <Button type="primary">增加</Button>
                 </UserModal>
-            </div>
+                </Col>
+            </Row>  
+
             <PersonList onEdit={handleEdit} onDelete={handleDelete} persons={persons} />
         </div>
     

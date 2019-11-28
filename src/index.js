@@ -12,7 +12,7 @@ const app = dva(
              name: '胡彦斌',
              sex: '男',
              job:'歌手',
-             birthday:'1997/09/16',
+             birthday:'1997-09-16',
              hobby:['跑步','篮球','游戏']
            },
            {
@@ -20,7 +20,7 @@ const app = dva(
                name: '是多少',
                sex: '男',
                job:'演员',
-               birthday:'1997/09/16',
+               birthday:'1997-09-16',
                hobby:['跑步','篮球','游戏']
            },
            {
@@ -28,7 +28,7 @@ const app = dva(
                name: '小明',
                sex: '男',
                job:'学生',
-               birthday:'1997/09/16',
+               birthday:'1997-09-16',
                hobby:['跑步','篮球','游戏']
            },
            {
@@ -36,7 +36,7 @@ const app = dva(
                name: '小红',
                sex: '女',
                job:'歌手',
-               birthday:'1997/09/16',
+               birthday:'1997-09-16',
                hobby:['跑步','篮球','游戏']
            },
            {
@@ -44,7 +44,7 @@ const app = dva(
                name: '小林',
                sex: '男',
                job:'工程师',
-               birthday:'1997/09/16',
+               birthday:'1997-09-16',
                hobby:['跑步','篮球','游戏']
            },
          ],
